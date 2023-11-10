@@ -1,1 +1,1 @@
-exports.serverUrl = 'https://alemeno-web-service.onrender.com';
+exports.serverUrl = 'http://localhost:8000';
