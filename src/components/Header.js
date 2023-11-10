@@ -35,10 +35,9 @@ const Header = (props) => {
       <h2>{props.content}</h2>
       <div>
         {localStorage.getItem('isAuthenticated') == 'false' ?
-          <>
-            <Link to='/login' className='btn btn-primary'>Sign in</Link>
-          </>
-          : <button className='btn btn-primary' onClick={logout}>Sign out</button>
+          <Link to='/login' className='btn btn-primary'>Sign in</Link>
+
+          : <><Link to='/mycourses'>My Courses</Link><button className='btn btn-primary' style={{margin:"1rem"}} onClick={logout}>Sign out</button></>
         }
       </div>
     </div>
