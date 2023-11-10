@@ -10,23 +10,24 @@ const Course = (props) => {
 
     const [courseList, setCourses] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchCourses = async () => {
-    //         const limit = 5;
-    //         const page = 1;
-    //         const response = await fetch(`${serverUrl}/course/allCourses?limit=${limit}&page=${page}`, {
-    //             method: 'GET',
-    //             headers: { 'Content-Type': 'application/json' }
-    //         });
+    useEffect(() => {
+        const fetchCourses = async () => {
+            const limit = 5;
+            const page = 1;
+            const response = await fetch(`${serverUrl}/course/allCourses?limit=${limit}&page=${page}`, {
+                method: 'GET',
+                credentials:'include',
+                headers: { 'Content-Type': 'application/json' }
+            });
 
-    //         const jsonResp = await response.json();
-    //         const courses = jsonResp.courses;
+            const jsonResp = await response.json();
+            const courses = jsonResp.courses;
 
-    //         // console.log(courses);
-    //         setCourses(courses);
-    //     }
-    //     fetchCourses();
-    // }, [])
+            // console.log(courses);
+            setCourses(courses);
+        }
+        fetchCourses();
+    }, [])
 
     function handleCourseClick(e) {
         try {
