@@ -9,7 +9,8 @@ const Header = (props) => {
   const logout = async () => {
     try {
       const response = await fetch(`${serverUrl}/auth/logout`, {
-        method: "GET"
+        method: "GET",
+        credentials: 'include'
       });
 
       const jsonResp = await response.json();

@@ -27,6 +27,7 @@ const Login = () => {
             if(jsonResp.success==true){
                 setAuthenticated(true);
                 localStorage.setItem('isAuthenticated','true');
+                console.log(document.cookies);
                 navigate('/');
             }
             else{
