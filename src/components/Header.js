@@ -36,7 +36,6 @@ const Header = (props) => {
       <div>
         {localStorage.getItem('isAuthenticated') == 'false' ?
           <>
-            <Link to='/mycourses' />
             <Link to='/login' className='btn btn-primary'>Sign in</Link>
           </>
           : <button className='btn btn-primary' onClick={logout}>Sign out</button>
