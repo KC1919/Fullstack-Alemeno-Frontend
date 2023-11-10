@@ -59,7 +59,7 @@ const Course = (props) => {
             const cid=e.target.id.split('-')[1];
             console.log(cid);
 
-            const response=await fetch(`${serverUrl}/course/enroll`,{
+            const response=await fetch(`${serverUrl}/student/enroll`,{
                 method:'POST',
                 credentials:'include',
                 headers:{
