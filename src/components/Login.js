@@ -16,10 +16,9 @@ const Login = () => {
 
             const response = await fetch(`${serverUrl}/auth/login`, {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': serverUrl,
-                    'Access-Control-Allow-Credentials': true
                 },
                 body: JSON.stringify({ email: email, password: password })
             });
