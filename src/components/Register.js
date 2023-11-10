@@ -63,7 +63,7 @@ const Register = () => {
                 </form>
                 <div className=''>
                     <p><em>Already have an account?</em></p>
-                    <Link to="/login" type="submit" className="btn btn-primary btn-sm" style={{ margin: "1rem auto" }} >Sign in</Link>
+                    <Link to="/login" type="submit" className="btn btn-danger btn-sm" style={{ margin: "1rem auto" }} >Sign in</Link>
                 </div>
             </div>
         </>

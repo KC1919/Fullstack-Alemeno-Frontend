@@ -59,7 +59,7 @@ const Login = () => {
                 </form>
                 <div className=''>
                     <p><em>Don't have an account?</em></p>
-                    <Link to="/register" type="submit" className="btn btn-primary btn-sm" style={{ margin: "1rem auto" }} >Sign up</Link>
+                    <Link to="/register" type="submit" className="btn btn-danger btn-sm" style={{ margin: "1rem auto" }} >Sign up</Link>
                 </div>
             </div>
         </>
