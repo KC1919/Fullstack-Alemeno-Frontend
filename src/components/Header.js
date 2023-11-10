@@ -17,10 +17,10 @@ const Header = (props) => {
 
       if (jsonResp.success === true) {
         alert(jsonResp.message);
-        localStorage.setItem('isAuthenticated','false');
+        localStorage.setItem('isAuthenticated', 'false');
         navigate('/login');
       }
-      else{
+      else {
         alert(`${jsonResp.message}\n${jsonResp.error}`);
       }
     } catch (error) {
@@ -34,10 +34,13 @@ const Header = (props) => {
       <h2> </h2>
       <h2>{props.content}</h2>
       <div>
-      {localStorage.getItem('isAuthenticated')=='false'?
-        <Link to='/login' className='btn btn-primary'>Sign in</Link>
-        :<button className='btn btn-primary' onClick={logout}>Sign out</button>
-      }
+        {localStorage.getItem('isAuthenticated') == 'false' ?
+          <>
+            <Link to='/mycourses' />
+            <Link to='/login' className='btn btn-primary'>Sign in</Link>
+          </>
+          : <button className='btn btn-primary' onClick={logout}>Sign out</button>
+        }
       </div>
     </div>
   )
