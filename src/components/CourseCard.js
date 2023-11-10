@@ -57,7 +57,6 @@ const Course = (props) => {
     const handleEnroll = async (e) => {
         try {
             const cid=e.target.id.split('-')[1];
-            console.log(cid);
 
             const response=await fetch(`${serverUrl}/student/enroll`,{
                 method:'POST',
@@ -68,9 +67,10 @@ const Course = (props) => {
                 body: JSON.stringify({cid:cid})
             });
 
-            console.log(response);
+            const jsonResp=await response.json();
 
-            // console.log(jsonResp);
+            alert(jsonResp.message);
+
         } catch (error) {
             console.log("Hello");
             console.log("Failed to enroll!", error);
