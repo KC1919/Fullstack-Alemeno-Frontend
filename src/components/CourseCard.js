@@ -61,15 +61,16 @@ const Course = (props) => {
 
             const response=await fetch(`${serverUrl}/course/enroll`,{
                 method:'POST',
+                credentials:'include',
                 headers:{
                     'Content-Type':'application/json'
                 },
                 body: JSON.stringify({cid:cid})
             });
 
-            const jsonResp=await response.json();
+            console.log(response);
 
-            console.log(jsonResp);
+            // console.log(jsonResp);
         } catch (error) {
             console.log("Hello");
             console.log("Failed to enroll!", error);
