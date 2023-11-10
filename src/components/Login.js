@@ -16,7 +16,8 @@ const Login = () => {
 
             const response = await fetch(`${serverUrl}/auth/login`, {
                 method: "POST",
-                credentials: 'include',
+                mode:'no-cors',
+                credentials:'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
