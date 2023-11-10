@@ -1,0 +1,1 @@
+exports.serverUrl = 'https://alemeno-web-service.onrender.com';
