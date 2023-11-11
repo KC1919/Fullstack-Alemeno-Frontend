@@ -502,7 +502,7 @@ const CourseCard = (props) => {
                 <input className='form-control' id='search-box' type="text" placeholder='Search Courses' />
                 <button style={{ margin: "0 1rem" }} className='btn btn-primary btn-sm' onClick={handleSearch}>Search</button>
             </div>
-            <div className="row" id='course-container' style={{ padding: "1rem", justifyContent: "center", width: "100vw", margin: "0 auto" }}>
+            <div className="row card-deck" id='course-container' style={{ padding: "1rem", justifyContent: "center", width: "100vw", margin: "0 auto" }}>
                 {courseList.map((course, idx) => (
                     <div className="card row-lg" id={`card-${course._id}`} key={course._id} style={{ width: "18rem", margin: "1rem" }} onMouseOver={changeCursor} >
                         <img src={require(`../img/${Math.floor(Math.random() * 10)+idx}.avif`)} className="card-img-top" alt="..." />
