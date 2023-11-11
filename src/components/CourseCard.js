@@ -530,10 +530,10 @@ const CourseCard = (props) => {
                 ))}
 
                 <div className="pagination-div" style={{ justifyContent: "center", display:"flex" }}>
-                    {(page*limit) < limit?
+                    {(page*limit) > limit?
                         <button className="btn btn-danger btn-sm" onClick={handlePrevPage}>Prev</button>:null
                     }
-                    {(page*limit) <count?
+                    {(page*limit) < count?
                         <button className="btn btn-danger btn-sm" onClick={handleNextPage}>Next</button> : null
                     }
                 </div>
