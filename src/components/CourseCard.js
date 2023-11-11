@@ -468,7 +468,7 @@ const CourseCard = (props) => {
             const jsonResp = await response.json();
             const courses = jsonResp.courses;
 
-            console.log(courses);
+            // console.log(courses);
             setCourses(courses);
         } catch (error) {
             console.log("Failed to handle next page", error);
@@ -487,7 +487,7 @@ const CourseCard = (props) => {
             const jsonResp = await response.json();
             const courses = jsonResp.courses;
 
-            console.log(courses);
+            // console.log(courses);
             setCourses(courses);
         } catch (error) {
             console.log("Failed to handle prev page", error);
@@ -529,7 +529,7 @@ const CourseCard = (props) => {
                     </div>
                 ))}
 
-                <div className="pagination-div" style={{ justifyContent: "center", display:"flex" }}>
+                <div className="pagination-div" style={{ justifyContent: "center", display:"flex", width:'20vw' }}>
                     {(page*limit) > limit?
                         <button className="btn btn-danger btn-sm" onClick={handlePrevPage}>Prev</button>:null
                     }
