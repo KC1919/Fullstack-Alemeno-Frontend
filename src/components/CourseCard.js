@@ -529,7 +529,7 @@ const CourseCard = (props) => {
                     </div>
                 ))}
 
-                <div className="pagination-div" style={{ justifyContent: "center", display:"flex", width:'20vw' }}>
+                <div className="pagination-div" style={{ justifyContent: "space-around", display:"flex"}}>
                     {(page*limit) > limit?
                         <button className="btn btn-danger btn-sm" onClick={handlePrevPage}>Prev</button>:null
                     }
