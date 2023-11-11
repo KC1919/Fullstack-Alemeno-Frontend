@@ -379,7 +379,7 @@ const CourseCard = (props) => {
             jsonResp = await response.json();
             courses = jsonResp.courses;
 
-            // console.log(courses);
+            console.log(courses);
             setCourses(courses);
         }
         fetchCourses();
