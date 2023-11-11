@@ -36,16 +36,20 @@ const CourseCard = (props) => {
     const handleSearch = async (e) => {
         try {
             const searchKeyword = document.getElementById('search-box').value;
-            const response = await fetch(`${serverUrl}/course/search?search=${searchKeyword}`, {
-                method: 'GET',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            const jsonResp = await response.json();
-            const courses = jsonResp.courses;
-            setCourses(courses);
-
+            if(searchKeyword.length>0){
+                const response = await fetch(`${serverUrl}/course/search?search=${searchKeyword}`, {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+    
+                const jsonResp = await response.json();
+                const courses = jsonResp.courses;
+                setCourses(courses);
+            }else{
+                alert("Enter something to search");
+            }
+            
         } catch (error) {
             console.log("Failed to search course, server error");
             alert(`Failed to search course, server error\n${error}`);
