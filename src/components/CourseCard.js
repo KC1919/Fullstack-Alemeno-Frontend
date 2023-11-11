@@ -503,9 +503,9 @@ const CourseCard = (props) => {
                 <button style={{ margin: "0 1rem" }} className='btn btn-primary btn-sm' onClick={handleSearch}>Search</button>
             </div>
             <div className="row" id='course-container' style={{ padding: "1rem", justifyContent: "center", width: "100vw", margin: "0 auto" }}>
-                {courseList.map(course => (
+                {courseList.map((course, idx) => (
                     <div className="card row-lg" id={`card-${course._id}`} key={course._id} style={{ width: "18rem", margin: "1rem" }} onMouseOver={changeCursor} >
-                        <img src={course.img} className="card-img-top" alt="..." />
+                        <img src={require(`../img/${idx}.avif`)} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">{course.name}</h5>
                             <p className="card-text">
@@ -529,7 +529,7 @@ const CourseCard = (props) => {
                     </div>
                 ))}
 
-                <div className="pagination-div" style={{display:"flex", justifyContent:"space-around", alignItems:"center"}}>
+                <div className="pagination-div" style={{display:"flex", justifyContent:"space-around", alignItems:"center", width:"10rem", margin:"0 auto"}}>
                     {(page*limit) > limit?
                         <button className="btn btn-danger btn-sm" onClick={handlePrevPage}>Prev</button>:null
                     }
