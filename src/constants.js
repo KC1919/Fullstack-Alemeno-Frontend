@@ -1,1 +1,1 @@
-exports.serverUrl = 'http://alemeno-web-service.onrender.com';
+exports.serverUrl = 'https://alemeno-web-service.onrender.com';
