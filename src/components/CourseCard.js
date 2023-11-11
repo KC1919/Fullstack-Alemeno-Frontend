@@ -126,7 +126,7 @@ const CourseCard = (props) => {
                                 <b><p>{course.enrollment}</p></b>
                             </div>
                             <div style={{ display: "flex", justifyContent: "space-around" }}>
-                                {(localStorage.getItem('isAuthenticated') == 'true') ?
+                                {(localStorage.getItem('isAuthenticated') == 'true' && course.enrollment=='Open') ?
                                     <button className="btn btn-primary" onClick={handleEnroll} id={`btn-${course._id}`}>
                                         Enroll
                                     </button>
