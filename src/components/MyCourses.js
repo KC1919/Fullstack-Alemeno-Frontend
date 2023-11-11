@@ -7,6 +7,7 @@ const MyCourses = () => {
 
     const navigate = useNavigate();
     const [courseList, setCourses] = useState([]);
+    const [completeStatus, setCompleteStatus] = useState(false);
     useEffect(() => {
         const fetchMyCourses = async () => {
 
@@ -23,27 +24,27 @@ const MyCourses = () => {
 
             console.log(courses);
             setCourses(courses);
-
         }
 
         fetchMyCourses();
     }, []);
 
-    function handleCourseClick(e) {
-        try {
-            // console.log(e.target.id);
-            let courseDetails = [];
-            for (let i = 0; i < courseList.length; i++) {
-                if (courseList[i]._id == e.target.id) {
-                    courseDetails.push(courseList[i]);
-                    break;
-                }
-            }
-            navigate('/course', { state: courseDetails });
-        } catch (error) {
-            console.log("failed to navigate to course detail page", error);
-        }
-    }
+    // function handleCourseClick(e) {
+    //     try {
+    //         console.log(e.target.id);
+    //         let courseDetails = [];
+    //         for (let i = 0; i < courseList.length; i++) {
+    //             if (courseList[i]._id == e.target.id) {
+    //                 courseDetails.push(courseList[i]);
+    //                 break;
+    //             }
+    //         }
+    //         console.log(courseDetails);
+    //         navigate('/course', { state: courseDetails });
+    //     } catch (error) {
+    //         console.log("failed to navigate to course detail page", error);
+    //     }
+    // }
 
     function changeCursor(e) {
         try {
@@ -51,6 +52,32 @@ const MyCourses = () => {
             cardElem.style.cursor = "pointer";
         } catch (error) {
             console.log("Failed to change cursor to pointer", error);
+        }
+    }
+
+    const handleComplete = async (e) => {
+        try {
+            const cid = e.target.id;
+
+            const response = await fetch(`${serverUrl}/student/updateStatus`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cid: cid })
+            });
+
+            const jsonResp = await response.json();
+
+            if (jsonResp.success === true) {
+                setCompleteStatus(true);
+                e.target.disabled=true;
+            }
+
+        } catch (error) {
+            console.log("Failed to mark complete");
+            alert("Failed to mark course as complete");
         }
     }
 
@@ -72,11 +99,14 @@ const MyCourses = () => {
                             <div style={{ display: "flex", justifyContent: "space-around" }}>
                                 <em><p>Inst. {course.instructor}</p></em>
                             </div>
-                            <div style={{ display: "flex", justifyContent: "space-around" }}>
+                            {/* <div style={{ display: "flex", justifyContent: "space-around" }}>
                                 <button className="btn btn-primary" id={course._id} onClick={handleCourseClick}>
                                     Details
                                 </button>
-                            </div>
+                            </div> */}
+
+                            {course.completionStatus==false?
+                            <button className='btn btn-primary btn-sm' id={course._id} onClick={handleComplete}>Mark Complete</button>:null}
                         </div>
                     </div>
                 ))}

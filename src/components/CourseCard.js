@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import { serverUrl } from "../constants";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Header from "./Header";
 
-const Course = (props) => {
+const CourseCard = (props) => {
 
     const navigate = useNavigate();
 
@@ -14,20 +14,43 @@ const Course = (props) => {
         const fetchCourses = async () => {
             const limit = 5;
             const page = 1;
-            const response = await fetch(`${serverUrl}/course/allCourses?limit=${limit}&page=${page}`, {
+
+            let response;
+            let jsonResp;
+            let courses;
+
+            response = await fetch(`${serverUrl}/course/allCourses?limit=${limit}&page=${page}`, {
                 method: 'GET',
-                credentials:'include',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' }
             });
-
-            const jsonResp = await response.json();
-            const courses = jsonResp.courses;
+            jsonResp = await response.json();
+            courses = jsonResp.courses;
 
             // console.log(courses);
             setCourses(courses);
         }
         fetchCourses();
     }, [])
+
+    const handleSearch = async (e) => {
+        try {
+            const searchKeyword = document.getElementById('search-box').value;
+            const response = await fetch(`${serverUrl}/course/search?search=${searchKeyword}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            const jsonResp = await response.json();
+            const courses = jsonResp.courses;
+            setCourses(courses);
+
+        } catch (error) {
+            console.log("Failed to search course, server error");
+            alert(`Failed to search course, server error\n${error}`);
+        }
+    }
 
     function handleCourseClick(e) {
         try {
@@ -56,18 +79,18 @@ const Course = (props) => {
 
     const handleEnroll = async (e) => {
         try {
-            const cid=e.target.id.split('-')[1];
+            const cid = e.target.id.split('-')[1];
 
-            const response=await fetch(`${serverUrl}/student/enroll`,{
-                method:'POST',
-                credentials:'include',
-                headers:{
-                    'Content-Type':'application/json'
+            const response = await fetch(`${serverUrl}/student/enroll`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({cid:cid})
+                body: JSON.stringify({ cid: cid })
             });
 
-            const jsonResp=await response.json();
+            const jsonResp = await response.json();
 
             alert(jsonResp.message);
 
@@ -81,6 +104,10 @@ const Course = (props) => {
     return (
         <>
             <Header content="Courses" />
+            <div className='search-div' style={{ display: "flex", width:"30vw", margin:"0 auto"}}>
+                <input className='form-control' id='search-box' type="text" placeholder='Search Courses' />
+                <button style={{ margin: "0 1rem" }} className='btn btn-primary btn-sm' onClick={handleSearch}>Search</button>
+            </div>
             <div className="row" id='course-container' style={{ padding: "1rem", justifyContent: "center", width: "100vw", margin: "0 auto" }}>
                 {courseList.map(course => (
                     <div className="card row-lg" id={`card-${course._id}`} key={course._id} style={{ width: "18rem", margin: "1rem" }} onMouseOver={changeCursor} >
@@ -112,4 +139,4 @@ const Course = (props) => {
     );
 };
 
-export default Course;
+export default CourseCard;

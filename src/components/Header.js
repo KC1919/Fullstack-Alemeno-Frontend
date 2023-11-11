@@ -31,13 +31,13 @@ const Header = (props) => {
 
   return (
     <div className='header-div' style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1.5rem" }}>
-      <h2> </h2>
+      <h1> </h1>
       <h2>{props.content}</h2>
       <div>
         {localStorage.getItem('isAuthenticated') == 'false' ?
           <Link to='/login' className='btn btn-primary'>Sign in</Link>
 
-          : <><Link to='/mycourses'>My Courses</Link><button className='btn btn-primary' style={{margin:"1rem"}} onClick={logout}>Sign out</button></>
+          : <><Link to='/mycourses'>My Courses</Link><button className='btn btn-primary' style={{ margin: "1rem" }} onClick={logout}>Sign out</button></>
         }
       </div>
     </div>
