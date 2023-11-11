@@ -379,7 +379,7 @@ const CourseCard = (props) => {
             jsonResp = await response.json();
             courses = jsonResp.courses;
 
-            console.log(courses);
+            // console.log(courses);
             setCourses(courses);
         }
         fetchCourses();
@@ -468,7 +468,7 @@ const CourseCard = (props) => {
             const jsonResp = await response.json();
             const courses = jsonResp.courses;
 
-            // console.log(courses);
+            console.log(courses);
             setCourses(courses);
         } catch (error) {
             console.log("Failed to handle next page", error);
@@ -487,7 +487,7 @@ const CourseCard = (props) => {
             const jsonResp = await response.json();
             const courses = jsonResp.courses;
 
-            // console.log(courses);
+            console.log(courses);
             setCourses(courses);
         } catch (error) {
             console.log("Failed to handle prev page", error);
