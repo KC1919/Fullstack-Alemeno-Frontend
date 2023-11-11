@@ -505,7 +505,7 @@ const CourseCard = (props) => {
             <div className="row" id='course-container' style={{ padding: "1rem", justifyContent: "center", width: "100vw", margin: "0 auto" }}>
                 {courseList.map(course => (
                     <div className="card row-lg" id={`card-${course._id}`} key={course._id} style={{ width: "18rem", margin: "1rem" }} onMouseOver={changeCursor} >
-                        <img src={require('../img/course_img.png')} className="card-img-top" alt="..." />
+                        <img src={require(course.img)} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">{course.name}</h5>
                             <p className="card-text">
