@@ -9,7 +9,7 @@ const CourseCard = (props) => {
     const navigate = useNavigate();
 
     const [courseList, setCourses] = useState([]);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [count, setCount] = useState(20);
     const [limit, setPerPageLimit] = useState(5);
 
